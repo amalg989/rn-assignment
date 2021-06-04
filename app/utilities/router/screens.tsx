@@ -27,14 +27,15 @@ const ExploreStack = createStackNavigator();
 const SettingsStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-function HomeStackScreen() {
+function HomeStackScreen(props: any) {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          headerTitle: props => (
+          headerLeft: () => null,
+          headerTitle: () => (
             <Header
               containerStyle={{marginHorizontal: -20, marginBottom: 20}}
               leftComponent={{
@@ -58,6 +59,7 @@ function ExploreStackScreen() {
         name="Settings"
         component={TabExplore}
         options={{
+          headerLeft: () => null,
           headerTitle: props => (
             <Header
               containerStyle={{marginHorizontal: -20, marginBottom: 20}}
@@ -82,6 +84,7 @@ function ProfileStackScreen() {
         name={NAVIGATION.HOME.PROFILE}
         component={ProfileScreen}
         options={{
+          headerLeft: () => null,
           headerTitle: props => (
             <Header
               containerStyle={{marginHorizontal: -20, marginBottom: 20}}
