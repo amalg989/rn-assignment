@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
-import {CommonActions} from '@react-navigation/native';
+import {CommonActions, DrawerActions} from '@react-navigation/native';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {
   createDrawerNavigator,
@@ -41,7 +41,8 @@ function HomeStackScreen(props: any) {
               leftComponent={{
                 icon: 'menu',
                 color: '#fff',
-                onPress: () => Alert.alert(JSON.stringify(props)),
+                onPress: () =>
+                  props.navigation.dispatch(DrawerActions.openDrawer()),
               }}
               centerComponent={{text: 'Home'}}
             />
@@ -52,7 +53,7 @@ function HomeStackScreen(props: any) {
   );
 }
 
-function ExploreStackScreen() {
+function ExploreStackScreen(props: any) {
   return (
     <ExploreStack.Navigator>
       <ExploreStack.Screen
@@ -60,13 +61,14 @@ function ExploreStackScreen() {
         component={TabExplore}
         options={{
           headerLeft: () => null,
-          headerTitle: props => (
+          headerTitle: () => (
             <Header
               containerStyle={{marginHorizontal: -20, marginBottom: 20}}
               leftComponent={{
                 icon: 'menu',
                 color: '#fff',
-                onPress: () => Alert.alert(JSON.stringify(props)),
+                onPress: () =>
+                  props.navigation.dispatch(DrawerActions.openDrawer()),
               }}
               centerComponent={{text: 'Explore'}}
             />
@@ -77,7 +79,7 @@ function ExploreStackScreen() {
   );
 }
 
-function ProfileStackScreen() {
+function ProfileStackScreen(props: any) {
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen
@@ -85,13 +87,14 @@ function ProfileStackScreen() {
         component={ProfileScreen}
         options={{
           headerLeft: () => null,
-          headerTitle: props => (
+          headerTitle: () => (
             <Header
               containerStyle={{marginHorizontal: -20, marginBottom: 20}}
               leftComponent={{
                 icon: 'menu',
                 color: '#fff',
-                onPress: () => Alert.alert(JSON.stringify(props)),
+                onPress: () =>
+                  props.navigation.dispatch(DrawerActions.openDrawer()),
               }}
               centerComponent={{text: 'Profile'}}
             />
